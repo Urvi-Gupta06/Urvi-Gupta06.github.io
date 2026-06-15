@@ -1,0 +1,27 @@
+/* Global styles: Tailwind import, dark-mode variant, smooth scrolling, and shared card interactions */
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reusable interactive card: color shift on hover, slight press on click */
+@layer components {
+  .interactive-card {
+    @apply cursor-pointer rounded-lg border border-gray-200 bg-white p-6
+      transition-all duration-200 ease-in-out
+      hover:border-pink-300 hover:bg-pink-50 hover:shadow-md
+      active:scale-[0.98]
+      dark:border-gray-700 dark:bg-gray-900
+      dark:hover:border-pink-500 dark:hover:bg-gray-800;
+  }
+
+  .nav-link {
+    @apply cursor-pointer rounded-md px-3 py-2 text-sm font-medium
+      transition-colors duration-200
+      hover:bg-pink-100 hover:text-pink-700
+      dark:hover:bg-gray-800 dark:hover:text-pink-300;
+  }
+}
