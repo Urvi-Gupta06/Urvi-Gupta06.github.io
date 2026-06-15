@@ -1,6 +1,6 @@
 # urvigupta.github.io
 
-Personal portfolio — React, Vite, and Tailwind CSS. Hosted on GitHub Pages at [urvigupta.github.io](https://urvigupta.github.io) with custom domain `urvigupta.com`.
+Personal portfolio — React, Vite, and Tailwind CSS. Hosted on GitHub Pages at [urvi-gupta06.github.io](https://urvi-gupta06.github.io).
 
 ## Local development
 
