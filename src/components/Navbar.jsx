@@ -5,13 +5,13 @@ import ThemeToggle from './ThemeToggle'
 export default function Navbar({ sections, theme, onToggleTheme }) {
   return (
     <header className="fixed inset-x-0 top-0 z-40 hidden border-b border-gray-200 bg-white/90 backdrop-blur md:block dark:border-gray-800 dark:bg-black/90">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
+      <nav className="flex w-full items-center justify-between px-4 py-3 sm:px-6">
         <button
           type="button"
           onClick={() => scrollToSection('home')}
-          className="cursor-pointer text-lg font-semibold transition-colors duration-200 hover:text-pink-600 dark:hover:text-pink-400"
+          className="cursor-pointer text-lg font-semibold title-case transition-colors duration-200 hover:text-pink-600 dark:hover:text-pink-400"
         >
-          Urvi Gupta
+          Urvi
         </button>
 
         <ul className="flex flex-wrap items-center gap-1">

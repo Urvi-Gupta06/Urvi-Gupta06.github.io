@@ -13,9 +13,34 @@ html {
     @apply cursor-pointer rounded-lg border border-gray-200 bg-white p-6
       transition-all duration-200 ease-in-out
       hover:border-pink-300 hover:bg-pink-50 hover:shadow-md
-      active:scale-[0.98]
       dark:border-gray-700 dark:bg-gray-900
       dark:hover:border-pink-500 dark:hover:bg-gray-800;
+  }
+
+  /* Extra lift + click dip for pressable cards (e.g. Experience) */
+  .interactive-card-press {
+    @apply hover:-translate-y-0.5;
+  }
+
+  .interactive-card-press.is-pressed,
+  .interactive-card-press:active {
+    @apply translate-y-0.5 scale-[0.98] shadow-sm;
+  }
+
+  /* Card meta (dates, location) — gray, readable in light and dark */
+  .card-meta {
+    @apply text-base text-gray-500 dark:text-gray-400;
+  }
+
+  /* Card bullet text — same size as meta line */
+  .card-bullets {
+    @apply text-base text-gray-800 dark:text-gray-200;
+  }
+
+  /* Contact icons — turn pink when the card is hovered */
+  .contact-icon {
+    @apply transition-colors duration-200
+      group-hover:text-pink-600 dark:group-hover:text-pink-400;
   }
 
   .nav-link {
@@ -23,5 +48,276 @@ html {
       transition-colors duration-200
       hover:bg-pink-100 hover:text-pink-700
       dark:hover:bg-gray-800 dark:hover:text-pink-300;
+  }
+
+  /* Scroll reveal — subtle fade + lift (inspired by soft section entrances) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.125rem);
+    transition:
+      opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Typewriter intro on home */
+  .home-intro {
+    min-height: 4.75rem;
+    width: 100%;
+    max-width: 36rem;
+    margin-inline: auto;
+    padding: 0;
+    text-align: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+      'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    color: rgb(55 65 81);
+  }
+
+  .dark .home-intro {
+    color: rgb(209 213 219);
+  }
+
+  .home-intro-line {
+    display: block;
+    min-height: 1.6em;
+    white-space: pre-wrap;
+    word-break: break-word;
+    text-align: center;
+  }
+
+  .home-intro-line-secondary {
+    margin-top: 0.35rem;
+  }
+
+  .typewriter-cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 1.05em;
+    margin-left: 1px;
+    vertical-align: text-bottom;
+    background-color: currentColor;
+    animation: typewriter-blink 1s step-end infinite;
+  }
+
+  @keyframes typewriter-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .home-intro {
+      min-height: 5rem;
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .home-intro {
+      font-size: 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .typewriter-cursor {
+      animation: none;
+    }
+  }
+
+  /* Home — fixed viewport height, single page scroll; doodles live in bottom band */
+  .home-section {
+    scroll-margin-top: 4rem;
+    height: calc(100dvh - 4rem);
+    min-height: calc(100dvh - 4rem);
+    max-height: calc(100dvh - 4rem);
+    overflow: hidden;
+  }
+
+  .home-doodle-band {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    height: clamp(11rem, 36vh, 20rem);
+    overflow: hidden;
+  }
+
+  .home-doodles {
+    position: absolute;
+    inset: 0;
+  }
+
+  .home-doodles img {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .home-doodle-left {
+    left: 0;
+    height: 100%;
+    width: auto;
+    max-width: 32%;
+    object-position: bottom left;
+  }
+
+  .home-doodle-right {
+    right: 0;
+    height: 100%;
+    width: auto;
+    max-width: 32%;
+    object-position: bottom right;
+  }
+
+  .home-doodle-center-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
+    width: min(58vw, 22rem);
+    height: 88%;
+    transform: translateX(-50%);
+  }
+
+  .home-doodle-center {
+    position: absolute;
+    bottom: auto;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    transform: translate(-50%, -50%);
+  }
+
+  .dark .home-doodles img {
+    filter: invert(1);
+  }
+
+  .home-hero {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem clamp(10rem, 28vh, 14rem);
+  }
+
+  .home-hero-title {
+    font-size: clamp(1.5rem, 4.5vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  .home-hero-photo {
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: 767px) {
+    .home-doodle-band {
+      height: clamp(9rem, 30vh, 13rem);
+    }
+
+    .home-doodle-left {
+      left: 0;
+      max-width: 30%;
+    }
+
+    .home-doodle-right {
+      max-width: 30%;
+    }
+
+    .home-doodle-center-wrap {
+      width: min(68vw, 16rem);
+      height: 85%;
+    }
+
+    .home-hero {
+      justify-content: flex-start;
+      padding-top: 2rem;
+      padding-bottom: clamp(9rem, 26vh, 12rem);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .home-doodle-band {
+      height: clamp(15rem, 44vh, 26rem);
+    }
+
+    /* max-height keeps full building visible; width cap no longer clips tops */
+    .home-doodle-left,
+    .home-doodle-right {
+      height: auto;
+      max-height: 100%;
+      max-width: 32%;
+    }
+
+    .home-doodle-left {
+      left: clamp(2rem, 6vw, 7rem);
+    }
+
+    .home-doodle-center-wrap {
+      width: min(58vw, 28rem);
+      height: 75%;
+    }
+
+    .home-hero {
+      padding-bottom: clamp(14rem, 36vh, 18rem);
+    }
+  }
+
+  /* Soft fade from home into Experience — sits over bottom edge of doodle band */
+  .home-section-fade {
+    z-index: 2;
+    height: clamp(3rem, 10vh, 6rem);
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgb(255 255 255 / 0.55) 50%,
+      rgb(255 255 255) 100%
+    );
+  }
+
+  .dark .home-section-fade {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgb(0 0 0 / 0.55) 50%,
+      rgb(0 0 0) 100%
+    );
+  }
+
+  /* Equal-height card grids (Education, Experience) */
+  .equal-height-grid-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+  }
+
+  .equal-height-card {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
   }
 }

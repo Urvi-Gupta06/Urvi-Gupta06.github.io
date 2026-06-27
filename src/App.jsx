@@ -9,6 +9,7 @@ import Skills from './sections/Skills'
 import Education from './sections/Education'
 import Writing from './sections/Writing'
 import Contact from './sections/Contact'
+import Footer from './components/Footer'
 import { useTheme } from './hooks/useTheme'
 
 const SECTIONS = [
@@ -46,6 +47,7 @@ export default function App() {
         <Writing />
         <Contact />
       </main>
+      <Footer />
     </div>
   )
 }
